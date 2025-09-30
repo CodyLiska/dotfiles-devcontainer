@@ -1,0 +1,17 @@
+[character]
+success_symbol = "[➜](green)"
+error_symbol = "[✗](red)"
+
+[directory]
+style = "cyan"
+truncate_to_repo = true
+truncation_length = 3
+
+[git_branch]
+format = "on [$branch](blue)"
+
+[python]
+format = "via [py $version](yellow)"
+
+[nodejs]
+format = "via [node $version](cyan)"

@@ -1,0 +1,23 @@
+[user]
+    name = Cody Liska
+    email = you@example.com
+
+[core]
+    autocrlf = input
+    editor = code --wait
+
+[alias]
+    st = status -sb
+    co = checkout
+    br = branch
+    cm = commit -m
+    amend = commit --amend
+    lg = log --oneline --graph --decorate
+
+[color]
+    ui = auto
+
+[diff]
+    tool = vscode
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE

@@ -1,0 +1,26 @@
+# Cody's Aliases
+alias ll='ls -lah'
+alias ..='cd ..'
+alias ...='cd ../..'
+
+# Git shortcuts
+alias gs='git status'
+alias gco='git checkout'
+alias gb='git branch'
+alias gcm='git commit -m'
+alias gaa='git add .'
+
+# Node (if installed)
+command -v pnpm >/dev/null 2>&1 && alias pm='pnpm'
+
+# Python helpers
+alias py='python3'
+alias pipup='pip install --upgrade pip setuptools wheel'
+alias mkvenv='python3 -m venv .venv && source .venv/bin/activate'
+
+# Cross-platform update
+if [[ "$(uname)" == "Darwin" ]]; then
+  alias update='brew update && brew upgrade'
+elif [[ "$(uname -r)" == *"microsoft"* ]]; then
+  alias update='sudo apt update && sudo apt upgrade -y'
+fi

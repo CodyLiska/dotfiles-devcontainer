@@ -1,4 +1,4 @@
-# dotfiles-devcontainer
+# Dotfiles and Devcontainer
 
 A unified development environment for **macOS** and **WSL (Windows)**, with consistent dotfiles, VS Code settings, and Dev Containers.
 

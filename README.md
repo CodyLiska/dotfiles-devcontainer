@@ -2,7 +2,7 @@
 
 A unified development environment for **macOS** and **WSL (Windows)**, with consistent dotfiles, VS Code settings, and Dev Containers.
 
-## 📌 Overview
+## Overview
 
 This repo standardizes my development setup across platforms. It ensures that the same shell, prompt, editor settings, and developer tools are available whether working on macOS, WSL, or inside a container.
 
@@ -12,7 +12,7 @@ Key components:
 - **Devcontainer** → Python 3.11 + Node.js 20, dotfiles integration, VS Code settings/extensions
 - **VS Code settings** → consistent formatting, trimming, line endings, and UI tweaks
 
-## 🎨 Philosophy
+## Philosophy
 
 Switching between macOS and WSL often introduces small but frustrating differences (line endings, shells, environment paths, git behavior). This repo eliminates those differences by:
 
@@ -23,7 +23,7 @@ Switching between macOS and WSL often introduces small but frustrating differenc
 
 In short: _one developer experience, everywhere_.
 
-## 📂 Contents
+## Contents
 
 - `dotfiles/` → core configs (`.zshrc`, `.bashrc`, `.aliases`, `.gitconfig`, `starship.toml`)
 - `.devcontainer/` → Dev Container definition with Python + Node features
@@ -31,7 +31,7 @@ In short: _one developer experience, everywhere_.
 - `.gitignore` → ignores virtualenvs, node_modules, logs, and system cruft
 - `LICENSE` → MIT License
 
-## 🚀 Usage
+## Usage
 
 ### 1. Clone the repo
 
@@ -80,5 +80,3 @@ code .
 pip install -r requirements.txt   # optional
 npm install                       # optional
 ```
-
-You're ready to code 🚀

@@ -8,9 +8,9 @@ if [[ "$(uname)" == "Darwin" ]]; then
     if ! command -v brew >/dev/null 2>&1; then
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
-    brew install git zsh starship nvm python3 uv
+    brew install git zsh starship nvm python3 uv || true
 
-elif [[ "$(uname -r)" == *"microsoft"* ]]; then
+elif grep -qi microsoft /proc/version 2>/dev/null; then
     echo "Detected WSL"
     sudo apt update && sudo apt upgrade -y
     sudo apt install -y git curl build-essential zsh python3 python3-venv

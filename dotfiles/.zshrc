@@ -1,31 +1,35 @@
-# Cody's zsh config
-
+## Aliases
 [ -f ~/.aliases ] && source ~/.aliases
 
+# Case-insensitive completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
+# PATH adjustments
 if [[ "$(uname)" == "Darwin" ]]; then
   export PATH="/opt/homebrew/bin:$PATH"
-elif [[ "$(uname -r)" == *"microsoft"* ]]; then
+elif grep -qi microsoft /proc/version 2>/dev/null; then
   export PATH="/usr/local/bin:$PATH:/usr/bin:$PATH"
 fi
 
+# Editor
 export EDITOR="code --wait"
 
+# Node Version Manager
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
+# Python virtualenvs
 export WORKON_HOME=$HOME/.venvs
 mkdir -p $WORKON_HOME
 
-# PROMPT OPTIONS
+# === PROMPT OPTIONS ===
 
-# 1. Default: Starship
+# 1. Starship (default)
 if command -v starship >/dev/null 2>&1; then
   eval "$(starship init zsh)"
 fi
 
-# 2. Minimal Git Prompt
+# 2. Minimal Git prompt (fallback)
 # parse_git_branch() {
 #   git branch 2>/dev/null | grep '^*' | colrm 1 2
 # }

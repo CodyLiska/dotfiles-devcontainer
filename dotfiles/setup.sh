@@ -7,7 +7,7 @@ FILES=(".aliases" ".zshrc" ".bashrc" ".gitconfig")
 
 for FILE in "${FILES[@]}"; do
     if [ -f ~/$FILE ]; then
-        mv ~/$FILE ~/$FILE.backup
+        mv ~/$FILE ~/$FILE.backup.$(date +%s)
     fi
     ln -sf ~/dotfiles/$FILE ~/$FILE
 done

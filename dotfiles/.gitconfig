@@ -1,5 +1,5 @@
 [user]
-    name = Cody Liska
+    name = Your Name
     email = you@example.com
 
 [core]
@@ -21,3 +21,6 @@
     tool = vscode
 [difftool "vscode"]
     cmd = code --wait --diff $LOCAL $REMOTE
+
+[credential]
+    helper = store

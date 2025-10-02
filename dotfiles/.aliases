@@ -1,4 +1,4 @@
-# Cody's Aliases
+# Common navigation
 alias ll='ls -lah'
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -18,9 +18,9 @@ alias py='python3'
 alias pipup='pip install --upgrade pip setuptools wheel'
 alias mkvenv='python3 -m venv .venv && source .venv/bin/activate'
 
-# Cross-platform update
+# System update
 if [[ "$(uname)" == "Darwin" ]]; then
   alias update='brew update && brew upgrade'
-elif [[ "$(uname -r)" == *"microsoft"* ]]; then
+elif grep -qi microsoft /proc/version 2>/dev/null; then
   alias update='sudo apt update && sudo apt upgrade -y'
 fi

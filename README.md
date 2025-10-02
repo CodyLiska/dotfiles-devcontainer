@@ -1,4 +1,4 @@
-# Dotfiles and Devcontainer
+# Dotfiles with Devcontainer
 
 A unified development environment for **macOS** and **WSL (Windows)**, with consistent dotfiles, VS Code settings, and Dev Containers.
 
@@ -29,54 +29,56 @@ In short: _one developer experience, everywhere_.
 - `.devcontainer/` → Dev Container definition with Python + Node features
 - `.vscode/` → VS Code project settings and extension recommendations
 - `.gitignore` → ignores virtualenvs, node_modules, logs, and system cruft
-- `LICENSE` → MIT License
 
 ## Usage
 
-### 1. Clone the repo
+### ⚠️ Important Notes for WSL Users
 
-```bash
-git clone https://github.com/CodyLiska/dotfiles-devcontainer.git
-cd dotfiles-devcontainer
-```
+- **Clone into your WSL home directory**, not into a mounted Windows drive (`/mnt/c/...` or `/mnt/d/...`), to avoid line-ending and permission issues.
 
-### 2. Run bootstrap (fresh machine only)
+  ```bash
+  cd ~
+  git clone https://github.com/CodyLiska/dotfiles-devcontainer.git
+  cd dotfiles-devcontainer
+  ```
 
-- Installs required packages via Homebrew (macOS) or apt (WSL)
-- Installs Starship and nvm
+- Ensure scripts are executable before running them:
+  ```bash
+  chmod +x dotfiles/bootstrap.sh
+  chmod +x dotfiles/setup.sh
+  ```
+
+### 1. Bootstrap (new machine only)
+
+Installs required dependencies (`brew` on macOS, `apt` on WSL), Starship, NVM, Python, etc.
 
 ```bash
 ./dotfiles/bootstrap.sh
 ```
 
-### 3. Apply dotfiles
+### 2. Apply dotfiles
 
-- Symlinks configs to `$HOME`
-- Activates Starship prompt
+Symlinks dotfiles into your home directory.
 
 ```bash
 ./dotfiles/setup.sh
 ```
 
-### 4. Open in VS Code
+### 3. VS Code + Devcontainer
 
-VS Code will:
+Open the repo in VS Code. It will:
 
 - Apply `.vscode/settings.json` and `.vscode/extensions.json`
-- Detect `.devcontainer/` and prompt to reopen in container
+- Detect `.devcontainer/` and prompt to reopen in a container
 
 ```bash
 code .
 ```
 
-### 5. Inside Dev Container
+From here you’ll be running Python 3.11 + Node.js 20 with consistent dotfiles and editor settings.
 
-- Python 3.12 and Node.js 22 available
-- Dotfiles applied automatically
-- VS Code settings/extensions synced
-- Dependencies auto-installed if `requirements.txt` or `package.json` exist
+## ✅ Prompt Options
 
-```bash
-pip install -r requirements.txt   # optional
-npm install                       # optional
-```
+- Default: Starship
+- Minimal Git Prompt (comment/uncomment in `.zshrc`)
+- Powerlevel10k (manual install + enable in `.zshrc`)

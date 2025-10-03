@@ -20,3 +20,6 @@ __pycache__/
 .vscode/*
 !.vscode/settings.json
 !.vscode/extensions.json
+
+# Personal Config
+.gitconfig

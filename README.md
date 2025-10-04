@@ -2,12 +2,12 @@
 
 A unified development environment for **macOS** and **WSL (Windows)**, with consistent dotfiles, VS Code settings, and Dev Containers.
 
-## 📌 Overview
+## Overview
 This repo standardizes Cody's development setup across platforms. It ensures that the same shell, prompt, editor settings, and developer tools are available whether working on macOS, WSL, or inside a container.
 
-## 🚀 Usage
+## Usage
 
-### ⚠️ Important Notes for WSL Users
+### Important Notes for WSL Users
 - **Clone into your WSL home directory**, not into a mounted Windows drive (`/mnt/c/...` or `/mnt/d/...`), to avoid line-ending and permission issues.
   ```bash
   cd ~
@@ -36,7 +36,7 @@ This repo standardizes Cody's development setup across platforms. It ensures tha
 code .
 ```
 
-## ✅ Prompt Options
+## Prompt Options
 - Default: Starship
 - Minimal Git Prompt (commented fallback)
 - Powerlevel10k (manual install + enable in `.zshrc`)

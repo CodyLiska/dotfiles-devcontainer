@@ -1,41 +1,41 @@
 ## Aliases
 [ -f ~/.aliases ] && source ~/.aliases
 
-# Case-insensitive completion
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+# Load colors and set prompt substitution
+autoload -Uz colors && colors
+setopt PROMPT_SUBST
 
-# PATH adjustments
-if [[ "$(uname)" == "Darwin" ]]; then
-  export PATH="/opt/homebrew/bin:$PATH"
-elif grep -qi microsoft /proc/version 2>/dev/null; then
-  export PATH="/usr/local/bin:$PATH:/usr/bin:$PATH"
+# --- Prompt Configuration ---
+# Clean, readable prompt showing user, host, path, and git branch
+git_prompt_info() {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+  echo "($(basename $ref))"
+}
+
+PROMPT='%{$fg[cyan]%}%n@%m %{$fg[yellow]%}%~ %{$fg[green]%}$(git_prompt_info)%{$reset_color%} $ '
+
+# --- Platform Detection ---
+if grep -qi microsoft /proc/version 2>/dev/null; then
+  export PROMPT="[WSL] ${PROMPT}"
 fi
 
-# Editor
-export EDITOR="code --wait"
+# --- History ---
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt INC_APPEND_HISTORY SHARE_HISTORY HIST_IGNORE_DUPS
 
-# Node Version Manager
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+# --- Path Adjustments ---
+export PATH="$HOME/bin:$PATH"
 
-# Python virtualenvs
-export WORKON_HOME=$HOME/.venvs
-mkdir -p $WORKON_HOME
+# --- Editor ---
+export EDITOR="code -w"
 
-# === PROMPT OPTIONS ===
 
-# 1. Starship (default)
-if command -v starship >/dev/null 2>&1; then
-  eval "$(starship init zsh)"
-fi
+# --- Optional Plugins (if desired) ---
+# Example: uncomment to enable if you install these manually
+# source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# 2. Minimal Git prompt (fallback)
-# parse_git_branch() {
-#   git branch 2>/dev/null | grep '^*' | colrm 1 2
-# }
-# PROMPT='%F{cyan}%n@%m%f %F{yellow}%~%f %F{blue}$(parse_git_branch)%f $ '
-
-# 3. Powerlevel10k (optional)
-# git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.powerlevel10k
-# echo 'source ~/.powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# --- Final ---
+echo "Zsh configuration loaded successfully."

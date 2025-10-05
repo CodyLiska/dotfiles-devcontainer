@@ -9,6 +9,8 @@ alias gco='git checkout'
 alias gb='git branch'
 alias gcm='git commit -m'
 alias gaa='git add .'
+alias gl='git log --oneline --decorate --graph'
+alias reload='source ~/.zshrc'
 
 # Node (if installed)
 command -v pnpm >/dev/null 2>&1 && alias pm='pnpm'
